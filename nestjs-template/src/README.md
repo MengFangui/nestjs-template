@@ -19,3 +19,13 @@ nest g controller module/admin/login
 ## src/schema 数据库schema
 ## src/interface 接口
 
+## public 静态资源目录
+## views 模板目录
+
+#插件
+## cookie
+## express
+## ejs
+```bash
+cnpm i cookie-parser express-session ejs --save
+```

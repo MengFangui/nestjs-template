@@ -22,13 +22,16 @@
   "dependencies": {
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
+    "@nestjs/mongoose": "^6.1.2",
     "@nestjs/platform-express": "^6.7.2",
     "cookie-parser": "^1.4.4",
     "ejs": "^3.0.1",
     "express-session": "^1.17.0",
+    "mongoose": "^5.8.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3",
+    "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^6.9.0",

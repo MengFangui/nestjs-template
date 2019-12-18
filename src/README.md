@@ -30,6 +30,8 @@ nest g controller module/admin/login
 ```bash
 cnpm i cookie-parser express-session ejs --save
 ```
+## md5 加密
+
 ## svg-captcha 图片验证码
 
 # 中间件

@@ -7,7 +7,8 @@ import * as session from 'express-session';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   //配置静态资源目录
-  app.useStaticAssets(path.join(__dirname, '..', 'public'));
+  // app.useStaticAssets(path.join(__dirname, '..', 'public'));
+  app.useStaticAssets('public');
   //配置模板引擎
   app.setBaseViewsDir('views');
   app.setViewEngine('ejs');
@@ -21,6 +22,8 @@ async function bootstrap() {
     cookie: { maxAge: 1000 * 60 * 30, httpOnly: true },
     rolling: true
   }));
-  await app.listen(3000);
+  // 允许跨域
+  app.enableCors();
+  await app.listen(3001);
 }
 bootstrap();

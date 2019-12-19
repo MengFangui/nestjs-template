@@ -68,6 +68,10 @@ export class TestController {
         // 一定要注意文件的路径
         const writeImage = createWriteStream(join(__dirname, '../../../../public/upload', `${file.originalname}`))
         writeImage.write(file.buffer)
+
+        return {
+            path: `/upload/${file.originalname}`
+        }
     }
 
 

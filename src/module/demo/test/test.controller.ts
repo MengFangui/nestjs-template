@@ -78,7 +78,11 @@ export class TestController {
     @Get('set-cookie')
     setCookie(@Response() res) {
         res.cookie("name", 'mfg');
-        res.send({
+        // res.send({
+        //     status: 1
+        // })
+        //or
+        res.json({
             status: 1
         })
     }

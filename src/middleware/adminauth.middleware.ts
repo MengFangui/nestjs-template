@@ -23,6 +23,7 @@ export class AdminauthMiddleware implements NestMiddleware {
     res.locals.info = {
       name: 'mfg'
     }
+    console.log('服务器打印：middle 中间件')
     next();
   }
 }

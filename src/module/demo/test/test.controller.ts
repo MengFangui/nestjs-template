@@ -74,5 +74,29 @@ export class TestController {
         }
     }
 
+    // 设置cookie
+    @Get('set-cookie')
+    setCookie(@Response() res) {
+        res.cookie("name", 'mfg');
+        res.send({
+            status: 1
+        })
+    }
+    // 获取cookie
+    @Get('get-cookie')
+    getCookie(@Request() req) {
+        return req.cookies.name;
+    }
+
+    // 设置session
+    @Get('set-session')
+    setSession(@Request() req){
+        req.session.sessionTest = "mfg";
+    }
+    // 获取session
+    @Get('get-session')
+    getSession(@Request() req){
+       return req.session.sessionTest
+    }
 
 }

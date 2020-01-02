@@ -22,7 +22,8 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-
+## 文档
+请查看src目录下的README.md和MONGODB.md。
 
 ## Stay in touch
 

@@ -18,6 +18,7 @@ import { MongooseModule } from '@nestjs/mongoose';
   controllers: [],
   providers: [ToolsService],
 })
+// 配置middlewire中间件
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Request, Response, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Body, Request, Response, UseInterceptors, UploadedFile, UsePipes, Query, UseGuards } from '@nestjs/common';
 // 引入服务
 import { ToolsService } from '../../../service/tools/tools.service'
 
@@ -12,8 +12,19 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { createWriteStream } from 'fs'
 import { join } from 'path'
 
+// 引入管道
+import { ParamPipe } from '../../../pipe/param.pipe'
+import * as Joi from '@hapi/joi';
+let rootInfo = Joi.object().keys({
+    name: Joi.string().required(),
+    age: Joi.number().integer().min(6).max(66).required(),
+})
+// 引入守卫
+import { AuthGuard } from '../../../guard/auth.guard'
 
 @Controller(`${Config.adminPath}/test`)
+// 配置守卫 这里是usernew下的路由都是守卫的
+// @UseGuards(AuthGuard)
 export class TestController {
     constructor(private toolsService: ToolsService, private articleService: ArticleService) { }
     @Get()
@@ -101,6 +112,23 @@ export class TestController {
     @Get('get-session')
     getSession(@Request() req){
        return req.session.sessionTest
+    }
+
+    // 管道实例
+    @Get('/pipe')
+    @UsePipes(new ParamPipe(rootInfo))
+    // http://localhost:3001/demo/test/pipe
+    pipe(@Query() query) {
+        console.log(query)
+    }
+
+    // guard实例
+    @Get('/guard')
+    // http://127.0.0.1:3001/demo/test/guard
+    // 配置守卫 也可以在方法上创建守卫
+    @UseGuards(AuthGuard)
+    guardTest() {
+        return '我是guard示例'
     }
 
 }

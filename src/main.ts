@@ -4,6 +4,8 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import * as path from "path";
 import * as cookieParser from 'cookie-parser';
 import * as session from 'express-session';
+// 守卫
+import { AuthGuard } from './guard/auth.guard'
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   //配置静态资源目录
@@ -24,6 +26,8 @@ async function bootstrap() {
   }));
   // 允许跨域
   app.enableCors();
+  // 配置全局路由守卫guard
+  app.useGlobalGuards(new AuthGuard());
   await app.listen(3001);
 }
 bootstrap();

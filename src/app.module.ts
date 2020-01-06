@@ -13,7 +13,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [AdminModule, DefaultModule, ApiModule, DemoModule,
-    MongooseModule.forRoot('mongodb://mfg:123456@127.0.0.1:27017/mfg', { useNewUrlParser: true, useUnifiedTopology: true })
+    MongooseModule.forRoot('mongodb://mfg:jump@127.0.0.1:27017/jump', { useNewUrlParser: true, useUnifiedTopology: true })
   ],
   controllers: [],
   providers: [ToolsService],
